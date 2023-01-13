@@ -1,9 +1,10 @@
-function createCard(name, description, pictureUrl, starts, ends) {
+function createCard(name, description, pictureUrl, starts, ends, location) {
 	return `
     <div class="card shadow-lg" style="padding-bottom":>
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
+            <h6 class="card-subtitle text-muted">${location}</h6>
             <p class="card-text">${description}</p>
         </div>
         <div class="card-footer">
@@ -39,12 +40,14 @@ window.addEventListener("DOMContentLoaded", async () => {
 					console.log(ends);
 					const description = details.conference.description;
 					const pictureUrl = details.conference.location.picture_url;
+					const location = details.conference.location.name;
 					const html = createCard(
 						title,
 						description,
 						pictureUrl,
 						starts,
-						ends
+						ends,
+						location
 					);
 					const columnTag = document.querySelector(
 						`#col-${index % 3}`
