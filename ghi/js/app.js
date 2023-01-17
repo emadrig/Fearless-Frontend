@@ -1,6 +1,6 @@
 function createCard(name, description, pictureUrl, starts, ends, location) {
 	return `
-    <div class="card shadow-lg" style="padding-bottom":>
+    <div class="card mb-3 shadow">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
@@ -12,7 +12,7 @@ function createCard(name, description, pictureUrl, starts, ends, location) {
             ${new Date(ends).toLocaleDateString()}
         </div>
     </div>
-        `;
+    `;
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -32,15 +32,12 @@ window.addEventListener("DOMContentLoaded", async () => {
 				const detailResponse = await fetch(detailUrl);
 				if (detailResponse.ok) {
 					const details = await detailResponse.json();
-					console.log(details);
 					const title = details.conference.name;
-					const starts = details.conference.starts;
-					console.log(starts);
-					const ends = details.conference.ends;
-					console.log(ends);
 					const description = details.conference.description;
 					const pictureUrl = details.conference.location.picture_url;
 					const location = details.conference.location.name;
+					const starts = details.conference.starts;
+					const ends = details.conference.ends;
 					const html = createCard(
 						title,
 						description,
@@ -58,7 +55,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 			}
 		}
 	} catch (e) {
-		console.error(e);
+		console.error("error", e);
 		// Figure out what to do if an error is raised
 	}
 });
