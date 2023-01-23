@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 function AttendConferenceForm() {
 	const [conferences, setConferences] = useState([]);
 
-	
 	const [conference, setConference] = useState("");
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -83,7 +82,7 @@ function AttendConferenceForm() {
 					<img
 						width="300"
 						className="bg-white rounded shadow d-block mx-auto mb-4"
-						src="/logo.svg"
+						src="logo.svg"
 					/>
 				</div>
 				<div className="col">
