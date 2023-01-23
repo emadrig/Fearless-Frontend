@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 function AttendConferenceForm() {
+	const [conferences, setConferences] = useState([]);
+
+	
 	const [conference, setConference] = useState("");
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [conferences, setConferences] = useState([]);
 	const [hasSignedUp, setHasSignedUp] = useState(false);
 
 	const fetchData = async () => {

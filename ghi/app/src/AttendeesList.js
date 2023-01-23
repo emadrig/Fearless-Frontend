@@ -1,4 +1,22 @@
-function AttendeesList(props) {
+import { useEffect, useState } from "react";
+
+
+function AttendeesList() {
+	const [attendees, setAttendees]=useState([])
+
+	const getData = async () => {
+		const response = await fetch("http://localhost:8001/api/attendees")
+
+		if (response.ok) {
+			const data = await response.json();
+			setAttendees(data.attendees)
+		}
+	}
+
+	useEffect(() => {
+		getData()
+	}, [])
+
 	return (
 		<table className="table table-striped">
 			<thead>
@@ -8,7 +26,7 @@ function AttendeesList(props) {
 				</tr>
 			</thead>
 			<tbody>
-				{props.attendees.map((attendee) => {
+				{attendees.map((attendee) => {
 					return (
 						<tr key={attendee.href}>
 							<td>{attendee.name}</td>
